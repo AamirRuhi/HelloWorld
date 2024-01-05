@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+function getBankDetail(){
+	var difsc=document.getElementById("ifsc").value;
+	alert("hii"+d)
+	 var h;
+	 if (window.XMLHttpRequest)
+	 {
+	 // code for IE7+, Firefox, Chrome, Opera, Safari
+	      h=new XMLHttpRequest();
+	 }
+	 else
+	 {// code for IE6, IE5
+	  h=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	 h.onreadystatechange=function()
+	 {
+	 if (h.readyState==4 && h.status==200)
+	 {
+	 //document.getElementById("fname").value
+
+	     document.getElementById("t").value=h.responseText;  
+	 }
+}
+	 h.open("GET","BankMaster?ifsccode="+difsc,true);
+	 h.send();
+	}
+</script>
+
+</head>
+<body>
+<form action ="FirstDervlet">
+<table boder="3" bgcolor="red">
+<tr><td>Account No</td><td><input type="text" name="acconut"></td></tr>
+<tr><td>Bank add</td><td><input type="text" name="badd" id="t"readonly="readonly"></td></tr>
+<tr><td>Ifsc</td><td><input type="text" name="ifsc" id="ifsc" onblur = "getBankDetail();"></td></tr>
+<tr><td>Name</td><td><input type="text" name="name"></td></tr>
+<tr><td>Amount</td><td><input type="text" name="amount"></td></tr>
+<tr><td><input type ="submit">
+</table>
+</form>
+</body>
+</html>
